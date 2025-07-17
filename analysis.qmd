@@ -16,8 +16,130 @@ library(marginaleffects)
 library(easystats)
 
 x <- read_csv("https://raw.githubusercontent.com/PPBDS/bootcamp/refs/heads/master/_internal/data/resume.csv",
-        show_col_types = FALSE)
+        show_col_types = FALSE) |>
+  mutate(call = as.factor(call))
+
 ```
+
+
+```{r}
+logistic_reg() |> 
+    fit(as.factor(call) ~ city + quality, data = x)
+```
+
+
+```{r}
+logistic_reg() |> 
+    fit(as.factor(call) ~ city + quality, data = x)
+```
+
+```{r}
+
+logistic_reg() |>
+  fit(call ~ ethnicity + gender, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+```{r}
+logistic_reg() |>
+  fit(call ~ ethnicity + city, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+```{r}
+logistic_reg() |>
+  fit(call ~ ethnicity + jobs, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+```{r}
+logistic_reg() |>
+  fit(call ~ ethnicity + experience, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+
+```{r}
+logistic_reg() |>
+  fit(call ~ ethnicity + honors, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+```{r}
+logistic_reg() |>
+  fit(call ~ ethnicity + holes, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+
+```{r}
+logistic_reg() |>
+  fit(call ~ ethnicity + special, data = x) |>
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+```
+
+```{r}
+
+logistic_reg() |> 
+  fit(as.factor(call) ~ ethnicity + quality + gender + name + city + jobs + experience + honors + holes + special, data = x) |> 
+  tidy(conf.int = TRUE, exponentiate = TRUE, digits = 2) |> 
+  select(term, estimate, conf.low, conf.high)
+
+```
+
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+
+\section*{Logistic Regression Model}
+
+Let \( Y_i \in \{0, 1\} \) denote whether applicant \( i \) received a callback.
+
+\subsection*{Model Specification}
+
+\[
+\log \left( \frac{P(Y_i = 1)}{1 - P(Y_i = 1)} \right) = \beta_0 
++ \beta_1 \cdot \text{eth}_i 
++ \beta_2 \cdot \text{qual}_i 
++ \beta_3 \cdot \text{gender}_i 
++ \beta_4 \cdot \text{name}_i 
++ \beta_5 \cdot \text{city}_i 
++ \beta_6 \cdot \text{jobs}_i 
++ \beta_7 \cdot \text{exp}_i 
++ \beta_8 \cdot \text{hon}_i 
++ \beta_9 \cdot \text{holes}_i 
++ \beta_{10} \cdot \text{special}_i
+\]
+
+\subsection*{Probability Form}
+
+\[
+P(Y_i = 1) = \frac{1}{1 + \exp\left( 
+- \left(
+\beta_0 
++ \beta_1 \cdot \text{eth}_i 
++ \beta_2 \cdot \text{qual}_i 
++ \beta_3 \cdot \text{gender}_i 
++ \beta_4 \cdot \text{name}_i 
++ \beta_5 \cdot \text{city}_i 
++ \beta_6 \cdot \text{jobs}_i 
++ \beta_7 \cdot \text{exp}_i 
++ \beta_8 \cdot \text{hon}_i 
++ \beta_9 \cdot \text{holes}_i 
++ \beta_{10} \cdot \text{special}_i
+\right)
+\right)}
+\]
+
+\end{document}
+
 
 <!-- name indicates applicant's first name.
 

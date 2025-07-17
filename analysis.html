@@ -63,27 +63,128 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- name indicates applicant's first name.
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
 
-gender indicates gender.
 
-ethnicity indicates ethnicity (i.e., Caucasian-sounding vs. African-American sounding first name).
+Call:  stats::glm(formula = as.factor(call) ~ city + quality, family = stats::binomial, 
+    data = data)
 
-quality indicatesquality of resume.
+Coefficients:
+(Intercept)  citychicago   qualitylow  
+    -2.1387      -0.3985      -0.1930  
 
-call indicates whether the applicant was called back?
+Degrees of Freedom: 4869 Total (i.e. Null);  4867 Residual
+Null Deviance:      2727 
+Residual Deviance: 2709     AIC: 2715</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>parsnip model object
 
-city indicates city: Boston or Chicago.
 
-jobs indicates number of jobs listed on resume.
+Call:  stats::glm(formula = as.factor(call) ~ city + quality, family = stats::binomial, 
+    data = data)
 
-experience indicates number of years of work experience on the resume.
+Coefficients:
+(Intercept)  citychicago   qualitylow  
+    -2.1387      -0.3985      -0.1930  
 
-honors: Did the resume mention some honors?
-
-holes: Does the resume have some employment holes?
-
-special: Does the resume mention some special skills? -->
+Degrees of Freedom: 4869 Total (i.e. Null);  4867 Residual
+Null Deviance:      2727 
+Residual Deviance: 2709     AIC: 2715</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0708    0.0867   -30.5   9.60e-205   0.0595    0.0837
+2 ethnicitycauc   1.55      0.107      4.10  4.22e-  5   1.26      1.92  
+3 gendermale      0.881     0.129     -0.986 3.24e-  1   0.680     1.13  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0845    0.0964    -25.6  5.88e-145   0.0697     0.102
+2 ethnicitycauc   1.55      0.107       4.09 4.33e-  5   1.26       1.92 
+3 citychicago     0.671     0.106      -3.77 1.66e-  4   0.545      0.826</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0673    0.179    -15.1   1.69e-51   0.0472    0.0952
+2 ethnicitycauc   1.55      0.107      4.08  4.46e- 5   1.26      1.92  
+3 jobs            1.01      0.0432     0.151 8.80e- 1   0.924     1.10  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0498   0.116      -25.9  2.37e-148   0.0396    0.0623
+2 ethnicitycauc   1.55     0.108        4.08 4.56e-  5   1.26      1.92  
+3 experience      1.04     0.00920      4.25 2.14e-  5   1.02      1.06  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0647    0.0845    -32.4  3.73e-230   0.0546    0.0761
+2 ethnicitycauc   1.55      0.108       4.06 4.87e-  5   1.26      1.91  
+3 honorsyes       2.37      0.178       4.85 1.22e-  6   1.65      3.33  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0528     0.102    -28.8  7.77e-183   0.0431    0.0642
+2 ethnicitycauc   1.55       0.108      4.07 4.64e-  5   1.26      1.92  
+3 holesyes        1.70       0.107      4.96 6.92e-  7   1.38      2.09  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std.error statistic   p.value conf.low conf.high
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     0.0496    0.0981    -30.6  5.05e-206   0.0407    0.0598
+2 ethnicitycauc   1.55      0.108       4.08 4.41e-  5   1.26      1.92  
+3 specialyes      2.24      0.106       7.59 3.12e- 14   1.82      2.76  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 45 × 4
+   term          estimate conf.low conf.high
+   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+ 1 (Intercept)     0.0234  0.00659    0.0641
+ 2 ethnicitycauc   1.22    0.276      5.39  
+ 3 qualitylow      0.813   0.646      1.02  
+ 4 gendermale      2.31    0.527     10.1   
+ 5 nameAllison     3.37    0.559     22.1   
+ 6 nameAnne        2.99    0.495     19.8   
+ 7 nameBrad        2.85    0.887     10.9   
+ 8 nameBrendan     1.25    0.312      5.29  
+ 9 nameBrett       1.11    0.250      4.95  
+10 nameCarrie      4.90    0.812     32.3   
+# ℹ 35 more rows</code></pre>
+</div>
+</div>
 
 </main>
 <!-- /main column -->
